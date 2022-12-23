@@ -6,18 +6,8 @@ const productschema = mongoose.Schema({
     Price:{
         type:String
     },
-     Maincategory:{
-      type:String
-    },
-    SubCategory:{
-        type:String
-    },
-    SubsubCategory:{
-        type:String
-    },
-    featured:{
-        type:Boolean,
-        default:false
-    }
+  categoryid:{
+    type:String
+  }
 })
-module.exports = mongoose.model("ecommerce",productschema)
+module.exports = mongoose.model("products",productschema)

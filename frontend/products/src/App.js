@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <Routes>
           <Route path="/" element={<Allcategories/>} />
-          <Route path='/sub' element={<Subcategory/>}/>
+          <Route path='/sub/:id' element={<Subcategory/>}/>
           <Route path='/subelect' element={<SubElectronic/>}/>
           <Route path='/subsub' element={<Subsubcategory/>}/>
           <Route path='/noelement' element={<Categorynot/>}/>
