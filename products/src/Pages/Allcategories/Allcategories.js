@@ -13,7 +13,12 @@ function Allcategories() {
 const photos=[computermobiles,men,electronic]
 const [count,setCount]=useState('')
   const [category,setCategory]=useState()
-
+const [category1,setCategory1]=useState('')
+useEffect(()=>{
+  axios.get('http://localhost:5000/product/category1').then(response=>{
+    setCategory1(response.data)
+  })
+},[])
   useEffect(()=>{
 axios.get('http://localhost:5000/category').then((response)=>{
   setCategory(response.data)
@@ -44,7 +49,7 @@ axios.get('http://localhost:5000/category').then((response)=>{
       <div className='maincate'>
         <div className='cards'>
         {category && Array.from(category).map((item,index)=>{return(  
-        <Link to={`/sub/${item._id}`}> <div class="" uk-grid>
+        <Link to={`/sub/${item._id}/${item.Name}`}> <div class="" uk-grid>
         <div class="uk-card uk-card-default">
             <div class="uk-card-media-top">
                 <img src={photos[index]}  alt=""/>

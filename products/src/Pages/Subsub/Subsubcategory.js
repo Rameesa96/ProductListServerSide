@@ -7,6 +7,8 @@ function Subsubcategory() {
     const [childcategory,setChildcategory]=useState('')
     const location =useLocation()
     const id=location.pathname.split("/")[2]
+    const name=location.pathname.split("/")[3]
+    console.log(name)
     useEffect(()=>{
         axios.get(`http://localhost:5000/category/childcategory/${id}`).then(response=>{
           setChildcategory(response.data)
@@ -15,14 +17,14 @@ function Subsubcategory() {
           },[])
           const[product,setProduct]=useState('')
           useEffect(()=>{
-            axios.get('http://localhost:5000/product').then((response)=>{
+            axios.get(`http://localhost:5000/product/category1/${name}`).then((response)=>{
               setProduct(response.data)
              
             },[])
             
             
               },[])
-          console.log(childcategory)
+          console.log(product)
   return (
     <div>
            <div className='subcategories'>

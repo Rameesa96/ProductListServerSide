@@ -10,18 +10,12 @@ import './Subcategory.css'
 import axios from 'axios'
 function Subcategory() {
     const[product,setProduct]=useState('')
-    useEffect(()=>{
-      axios.get('http://localhost:5000/product').then((response)=>{
-        setProduct(response.data)
-       
-      },[])
-      
-      
-        },[])
+  
     const photos=[mobile,mobileaccess,laptop]
     const [subcategory,setSubcategory]=useState('')
     const location =useLocation()
     const id=location.pathname.split("/")[2]
+    const name=location.pathname.split("/")[3]
     useEffect(()=>{
         axios.get(`http://localhost:5000/category/subcategory/${id}`).then(response=>{
           setSubcategory(response.data)
@@ -29,6 +23,14 @@ function Subcategory() {
         })
         
           },[])
+          useEffect(()=>{
+            axios.get(`http://localhost:5000/product/category/${name}`).then((response)=>{
+              setProduct(response.data)
+             
+            },[])
+            
+            
+              },[])
           console.log(subcategory)
   return (
     
@@ -36,7 +38,7 @@ function Subcategory() {
       <Navbar/>
       <div className='subcate' >
       <div className='cards'>
-      {subcategory && Array.from(subcategory).map((item,index)=>{return(<> <Link to={`/subsub/${item._id}`}> <div  uk-grid>
+      {subcategory && Array.from(subcategory).map((item,index)=>{return(<> <Link to={`/subsub/${item._id}/${item.Name}`}> <div  uk-grid>
         <div class="uk-card uk-card-default" style={{backgroundColor: ' rgb(72, 200, 226)', color: 'white'}}>
            
             <div class="uk-card-body">

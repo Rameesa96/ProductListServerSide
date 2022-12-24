@@ -12,9 +12,9 @@ function App() {
     <div className="App">
       <Routes>
           <Route path="/" element={<Allcategories/>} />
-          <Route path='/sub/:id' element={<Subcategory/>}/>
+          <Route path='/sub/:id/:name' element={<Subcategory/>}/>
           <Route path='/allpro/:id' element={<Allproducts/>}/>
-          <Route path='/subsub/:id' element={<Subsubcategory/>}/>
+          <Route path='/subsub/:id/:name' element={<Subsubcategory/>}/>
           <Route path='/noelement' element={<Categorynot/>}/>
       </Routes>
     </div>
