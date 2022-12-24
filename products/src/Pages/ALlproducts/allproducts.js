@@ -19,7 +19,7 @@ function Allproducts() {
   return (
     <div className='allcategories'>
     <Navbar/>
-    <div className='maincate'>
+    <div className='subcate'>
       
 
     
