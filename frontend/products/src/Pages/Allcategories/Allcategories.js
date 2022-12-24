@@ -8,21 +8,33 @@ import men from '../../assets/men.webp'
 import './ALLCategories.css'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import CustomizedTables from '../../Components/Table'
 function Allcategories() {
 const photos=[computermobiles,men,electronic]
   const [category,setCategory]=useState()
-
+  const[product,setProduct]=useState('')
   useEffect(()=>{
 axios.get('http://localhost:5000/category').then((response)=>{
   setCategory(response.data)
  
 },[])
-console.log(category)
+
+
   },[])
+
+  useEffect(()=>{
+    axios.get('http://localhost:5000/product').then((response)=>{
+      setProduct(response.data)
+     
+    },[])
+    
+    
+      },[])
   return (
     <div className='allcategories'>
       <Navbar/>
-      <div className='maincate' >
+      <div className='maincate'>
+        <div className='cards'>
         {category && Array.from(category).map((item,index)=>{return(  
         <Link to={`/sub/${item._id}`}> <div class="" uk-grid>
         <div class="uk-card uk-card-default">
@@ -35,7 +47,7 @@ console.log(category)
         </div>
         </div></Link>
         )})}
-    
+    </div>
 
        {/* <Link to='/subelect'> <div class="" uk-grid>
         <div class="uk-card uk-card-default">
@@ -59,8 +71,11 @@ console.log(category)
             </div>
         </div>
         </div> */}
-
+        <div className='table'> 
+ <CustomizedTables className="tablecontent" products={product}/>
+ </div>
       </div>
+     
     </div>
 
   )

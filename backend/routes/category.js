@@ -55,29 +55,6 @@ router.post("/subcategory",async(req,res)=>{
                 })
 
 
-router.post("/subcategory",async(req,res)=>{
-   
-    const categorys =new Subcategory(req.body)
-        try{
-            const newproducts =await categorys.save()
-         res.status(200).json(newproducts)
-        }
-         catch(err){
-             res.status(500).json(err.message)
-        }
-    })
-        
-     router.get("/:id",async(req,res)=>{
-           
-                
-    try{
-    const newproducts =await Subcategory.find({parentid:req.params.id})
-     res.status(200).json(newproducts)
-        }
-        catch(err){
-         res.status(500).json(err.message)
-    }
- })
 
  router.post("/childcategory",async(req,res)=>{
    

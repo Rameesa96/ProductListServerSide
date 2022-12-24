@@ -5,15 +5,16 @@ import { Routes, Route } from "react-router-dom";
 import Subcategory from './Pages/Subcategory/Subcategory';
 import Subsubcategory from './Pages/Subsub/Subsubcategory';
 import Categorynot from './Pages/categorynotfound/Categorynot';
-import SubElectronic from './Pages/Subcategory/SubElectronic';
+import Allproducts from './Pages/ALlproducts/allproducts';
+
 function App() {
   return (
     <div className="App">
       <Routes>
           <Route path="/" element={<Allcategories/>} />
           <Route path='/sub/:id' element={<Subcategory/>}/>
-          <Route path='/subelect' element={<SubElectronic/>}/>
-          <Route path='/subsub' element={<Subsubcategory/>}/>
+          <Route path='/allpro/:id' element={<Allproducts/>}/>
+          <Route path='/subsub/:id' element={<Subsubcategory/>}/>
           <Route path='/noelement' element={<Categorynot/>}/>
       </Routes>
     </div>
