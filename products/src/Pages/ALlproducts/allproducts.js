@@ -3,7 +3,7 @@ import axios from 'axios'
 import Navbar from '../../Components/Navbar'
 import { useLocation ,Link} from 'react-router-dom'
 import CustomizedTables from '../../Components/Table'
-
+import Categorynot from '../categorynotfound/Categorynot'
 function Allproducts() {
     const location =useLocation()
     const id=location.pathname.split("/")[2]
@@ -22,10 +22,9 @@ function Allproducts() {
     <div className='subcate'>
       
 
-    
-      <div className='table'> 
+    {(product!='')?<div className='table'> 
 <CustomizedTables className="tablecontent" products={product}/>
-</div>
+</div>:<div ><Categorynot/></div>}  
     </div>
    
   </div>

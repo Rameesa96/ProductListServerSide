@@ -32,4 +32,33 @@ router.post("/",async(req,res)=>{
             res.status(500).json(err.message)
         }
   })
+  router.get('/getcount', async(req,res)=>{
+    try{
+        const newproducts =await product.find().count()
+            res.status(200).json(newproducts)
+        }
+        catch(err){
+            res.status(500).json(err.message)
+        }
+  })
+
+  router.get('/category1', async(req,res)=>{
+    try{
+        const newproducts =await product.find({Maincategory:"Computers,Mobiles"}).count()
+            res.status(200).json(newproducts)
+        }
+        catch(err){
+            res.status(500).json(err.message)
+        }
+  })
+
+  router.put('/push/:id', async(req,res)=>{
+    try{
+        const newproducts =await product.updateMany({categoryid:req.params.id},{$set:{Maincategory:req.body.Maincategory, subcategory:req.body.subcategory}},{new:true})
+            res.status(200).json(newproducts)
+        }
+        catch(err){
+            res.status(500).json(err.message)
+        }
+  })
 module.exports=router

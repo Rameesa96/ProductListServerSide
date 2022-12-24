@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom'
 import CustomizedTables from '../../Components/Table'
 function Allcategories() {
 const photos=[computermobiles,men,electronic]
+const [count,setCount]=useState('')
   const [category,setCategory]=useState()
 
   useEffect(()=>{
@@ -30,9 +31,16 @@ axios.get('http://localhost:5000/category').then((response)=>{
     
     
       },[])
+      useEffect(()=>{
+        axios.get('http://localhost:5000/product/getcount').then(response=>{
+          setCount(response.data)
+        })
+      },[])
+      
   return (
     <div className='allcategories'>
       <Navbar/>
+      <h1>Total count:{count}</h1>
       <div className='maincate'>
         <div className='cards'>
         {category && Array.from(category).map((item,index)=>{return(  

@@ -19,3 +19,18 @@ h3{
   text-align: center;
   font-weight: 600;
 }
+h1{
+  font-size: 100px;
+  color:White;
+  text-align: center;
+
+}
+.notfound{
+  font-size: 100px;
+  color:White;
+  text-align: center;
+ justify-content: center;
+ align-items: center;
+ display: flex;
+ margin: 0 auto;
+}

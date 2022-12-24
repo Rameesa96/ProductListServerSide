@@ -2,7 +2,11 @@ import React from 'react'
 
 function Categorynot() {
   return (
-    <div>Categorynot</div>
+    <div className='subcategories'>
+      <div className='notfound'>
+      <h1>No Products availble</h1>
+      </div>
+    </div>
   )
 }
 
