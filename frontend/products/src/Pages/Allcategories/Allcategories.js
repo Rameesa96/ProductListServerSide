@@ -12,7 +12,7 @@ import CustomizedTables from '../../Components/Table'
 function Allcategories() {
 const photos=[computermobiles,men,electronic]
   const [category,setCategory]=useState()
-  const[product,setProduct]=useState('')
+
   useEffect(()=>{
 axios.get('http://localhost:5000/category').then((response)=>{
   setCategory(response.data)
@@ -21,7 +21,7 @@ axios.get('http://localhost:5000/category').then((response)=>{
 
 
   },[])
-
+  const[product,setProduct]=useState('')
   useEffect(()=>{
     axios.get('http://localhost:5000/product').then((response)=>{
       setProduct(response.data)
@@ -49,28 +49,7 @@ axios.get('http://localhost:5000/category').then((response)=>{
         )})}
     </div>
 
-       {/* <Link to='/subelect'> <div class="" uk-grid>
-        <div class="uk-card uk-card-default">
-            <div class="uk-card-media-top">
-                <img src={electronic}  alt=""/>
-            </div>
-            <div class="uk-card-body">
-                <h3 class="uk-card-title">TV, Applications, Electronics</h3>           
-            </div>
-        </div>
-        </div></Link>
-
-        <div class="" uk-grid>
-        <div class="uk-card uk-card-default">
-            <div class="uk-card-media-top">
-                <img src={men}  alt=""/>
-            </div>
-            <div class="uk-card-body">
-                <h3 class="uk-card-title">Mens Fashion</h3>
-                
-            </div>
-        </div>
-        </div> */}
+      
         <div className='table'> 
  <CustomizedTables className="tablecontent" products={product}/>
  </div>
