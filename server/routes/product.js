@@ -14,6 +14,7 @@ router.post("/",async(req,res)=>{
     }
     })
   router.get('/', async(req,res)=>{
+  
     try{
         const newproducts =await product.find().limit(6)
             res.status(200).json(newproducts)

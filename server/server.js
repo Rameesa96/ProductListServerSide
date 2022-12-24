@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose =require('mongoose')
 const path =require("path")
 const app =express()
+const port = process.env.PORT||5000
 const productroute = require("./routes/product")
 const categoryroute =require("./routes/category")
 const bodyparser =require("body-parser")
@@ -27,6 +28,6 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.join(__dirname, '../products', 'build', 'index.html'));
   })
 }
-app.listen(5000,()=>{
+app.listen(port,()=>{
     console.log("server started")
 })
