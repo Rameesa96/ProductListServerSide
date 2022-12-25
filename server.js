@@ -24,12 +24,7 @@ app.use(bodyparser.urlencoded())
 
 app.use('/product',productroute)
 app.use('/category',categoryroute)
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../products', 'build')));
-  app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../products', 'build', 'index.html'));
-  })
-}
+
 app.listen(port,()=>{
     console.log(`server started in ${port}`)
 })
