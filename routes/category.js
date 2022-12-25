@@ -16,6 +16,17 @@ router.post("/",async(req,res)=>{
         res.status(500).json(err.message)
     }
     })
+    router.delete("/:id",async(req,res)=>{
+   
+        
+        try{
+        const newproducts =await category.findByIdAndDelete(req.params.id)
+            res.status(200).json("deleted")
+        }
+        catch(err){
+            res.status(500).json(err.message)
+        }
+        })
 
     router.get("/",async(req,res)=>{
    
