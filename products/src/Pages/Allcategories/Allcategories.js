@@ -15,12 +15,12 @@ const [count,setCount]=useState('')
   const [category,setCategory]=useState()
 const [category1,setCategory1]=useState('')
 useEffect(()=>{
-  axios.get('http://localhost:5000/product/category1').then(response=>{
+  axios.get('https://ecommerce11.adaptable.app/product/category1').then(response=>{
     setCategory1(response.data)
   })
 },[])
   useEffect(()=>{
-axios.get('http://localhost:5000/category').then((response)=>{
+axios.get('https://ecommerce11.adaptable.app/category').then((response)=>{
   setCategory(response.data)
  
 },[])
@@ -29,7 +29,7 @@ axios.get('http://localhost:5000/category').then((response)=>{
   },[])
   const[product,setProduct]=useState('')
   useEffect(()=>{
-    axios.get('http://localhost:5000/product').then((response)=>{
+    axios.get('https://ecommerce11.adaptable.app/product').then((response)=>{
       setProduct(response.data)
      
     },[])

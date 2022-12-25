@@ -18,6 +18,9 @@ mongoose.connection.on("error",()=>{
 })
 const port = process.env.PORT
 
+app.get('/', function (req, res) {
+  res.send("server running")
+});
 app.use(cors())
 app.use(express.json())
 app.use(bodyparser.urlencoded())
