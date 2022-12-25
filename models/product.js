@@ -7,6 +7,7 @@ const productschema = mongoose.Schema({
         type:String
     },Maincategory:{type:String},
     subcategory:{type:String},
+    childcategory:{type:String},
   categoryid:{
     type:String
   }
