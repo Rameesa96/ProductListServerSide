@@ -7,9 +7,9 @@ require("dotenv").config()
 const productroute = require("./routes/product")
 const categoryroute =require("./routes/category")
 const bodyparser =require("body-parser")
-
+const connectionString = process.env.DATABASE_URL;
 const cors=require('cors')
-mongoose.connect('mongodb+srv://rami:1234@product.bwuyfeg.mongodb.net/?retryWrites=true&w=majority')
+mongoose.connect(connectionString)
 mongoose.connection.on("connected",()=>{
     console.log("mongodb connected")
 })
