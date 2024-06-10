@@ -1,33 +1,40 @@
-const express = require('express')
-const mongoose =require('mongoose')
-const path =require("path")
-const app =express()
+
+const express = require('express');
+const mongoose= require('mongoose')
+const path=require('path')
+const cors = require("cors")
+const Shop = require('./routers/shops')
+const User =require('./routers/user')
+const Category = require('./routers/category')
+const Products = require('./routers/products')
+const app = express();
 require("dotenv").config()
 
-const productroute = require("./routes/product")
-const categoryroute =require("./routes/category")
-const bodyparser =require("body-parser")
-const connectionString = process.env.DATABASE_URL;
-const cors=require('cors')
-mongoose.connect(connectionString)
+const port = process.env.PORT
+const database_url=process.env.DATABASE_URL
+
+mongoose.connect(`${database_url}`)
 mongoose.connection.on("connected",()=>{
-    console.log("mongodb connected")
+    console.log("database connected")
 })
 mongoose.connection.on("error",()=>{
-    console.log("mongodb disconnected")
+    console.log("database error")
 })
-const port = process.env.PORT
 
-app.get('/', function (req, res) {
-  res.send("server running")
+app.get('/', (req, res) => {
+  res.send('Hello, World!');
 });
-app.use(cors())
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(express.json())
-app.use(bodyparser.urlencoded())
+app.use(express.urlencoded({ extended: true }));
+app.use(cors())
+app.use('/shop',Shop)
+app.use('/user',User)
+app.use('/shop',Shop)
+app.use('/products',Products)
+app.use('/category',Category)
 
-app.use('/product',productroute)
-app.use('/category',categoryroute)
 
-app.listen(port,()=>{
-    console.log(`server started in ${port}`)
-})
+app.listen(port, () => {
+  console.log(`Server is running at http://localhost:${port}`);
+});
